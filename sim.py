@@ -16,9 +16,10 @@ cols = ['aqua', 'blue', 'fuchsia', 'green', 'maroon', 'orange','pink', 'purple',
 
 # render diodes
 def draw(cv,ary=cols):
-    cv.delete("all")
-    for (X0,Y0) in zip(X0s,Y0s):
-        cv.create_oval(X0, Y0, X0+SZ, Y0+SZ, fill=random.choice(ary))
+    cv.delete("all") # clear canvas to prevent memory leaks
+    for i in range(2*LEN):
+        X0,Y0,c = X0s[i],Y0s[i],ary[i]
+        cv.create_oval(X0, Y0, X0+SZ, Y0+SZ, fill=c)
     return 1
 
 # Update fun
